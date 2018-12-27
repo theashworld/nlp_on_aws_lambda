@@ -41,4 +41,4 @@ nlp = spacy.load("/tmp/en_core_web_sm-2.0.0/en_core_web_sm/en_core_web_sm-2.0.0"
 
 ```
 
-Author email: shan@bewgle.com or theashworld@gmail.com
+*Contact me: shan@bewgle.com or theashworld@gmail.com*
