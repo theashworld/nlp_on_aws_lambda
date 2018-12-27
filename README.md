@@ -14,6 +14,7 @@ Steps are:
 - Remove all languages except `en` from `spacy/lang`. This is the most crucial step as it reduces the size significantly
 - Creat the layer zip: `zip -r9 spacyLayer.zip .`
 - Upload to s3 or directly upload to layers from the console
+- Your lambda function needs to use the `scipy` layer mentioned above and your new layer you just created, both, with the `scipy` layer coming first (as spacy depends on that)
 - In your lambda code, you need to install the data, e.g.`en_core_web_sm` before loading spacy, so do
 ```
 import os
