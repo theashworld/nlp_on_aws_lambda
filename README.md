@@ -1,9 +1,13 @@
 # Spacy and Textacy on AWS Lambda (Applies to other packages too)
-- How to install and use spacy and textacy on aws lambda works with python 3.6
+
+## How to install and use spacy and textacy on aws lambda works with python 3.6
 
 As spacy is a huge package, installing it on lambda has a lot of issues. We will use `layers` to install and use these packages. Also see https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers/
 
-Steps are:
+## In a nutshell
+As of now, the lambda function deployment zip can be at max 50MB large, you can check limits here: https://docs.aws.amazon.com/lambda/latest/dg/limits.html This means that installing spacy packages which are typically >250MB in size is impossible. Therefore we try to make the function size as small as possible by offloading dependencies on to layers. Further optimization is done by removing non-English models and removing data that is not needed at runtime like cache files. The spacy data models are downloaded and then loaded separately at runtime from `/tmp` as that directory has a higher limit of 512MB
+
+## Steps are
 - Create a new clean virtualenv with python3.6
 - In the virtualenv, install the package using pip, ie. run `pip install spacy`
 - Check all dependencies using `pip freeze` and put them in a `requirements.txt` file
@@ -36,3 +40,5 @@ if not os.path.isdir("/tmp/en_core_web_sm-2.0.0"):
 nlp = spacy.load("/tmp/en_core_web_sm-2.0.0/en_core_web_sm/en_core_web_sm-2.0.0")
 
 ```
+
+Author email: shan@bewgle.com or theashworld@gmail.com
