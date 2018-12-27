@@ -1,6 +1,6 @@
 # Spacy and Textacy on AWS Lambda (Applies to other packages too)
 
-## How to install and use spacy and textacy on aws lambda works with python 3.6
+## How to install and use spacy and textacy on aws lambda (works with python 3.6)
 
 As spacy is a huge package, installing it on lambda has a lot of issues. We will use `layers` to install and use these packages. Also see https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers/
 
