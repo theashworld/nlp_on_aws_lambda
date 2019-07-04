@@ -12,7 +12,7 @@ As of now, the lambda function deployment zip can be at max 50MB large, you can 
 - In the virtualenv, install the package using pip, ie. run `pip install spacy`
 - Check all dependencies using `pip freeze` and put them in a `requirements.txt` file
 - Remove dependencies that are satisfied by other layers, in my case, I have removed `numpy` and `scipy` as AWS provides these for us using a layer. The assumption is that the one provided by AWS will be maintained so one less thing to maintain and hopefully they'll optimize for size and speed of loading both? See details  
-- Using a lambda docker image, install all requirements without further deps - See https://medium.com/@qtangs/creating-new-aws-lambda-layer-for-python-pandas-library-348b126e9f3e for instructions. Essentially, do `PKG_DIR=python sudo docker run --rm -v $(pwd):/foo -w /foo lambci/lambda:build-python3.6 pip install -r requirements.txt --no-deps -t ${PKG_DIR}`
+- Using a lambda docker image, install all requirements without further deps - See https://medium.com/@qtangs/creating-new-aws-lambda-layer-for-python-pandas-library-348b126e9f3e for instructions. Essentially, do `sudo docker run --rm -v $(pwd):/foo -w /foo lambci/lambda:build-python3.6 pip install -r requirements.txt --no-deps -t python`
 - In the generated folder, get a list of all `__pycache__` directories and remove them. Something like `find . -type d | grep __pycache__` would give you the candidates
 - Optionally remove all directories with `test` in them, however `networkx` notoriously depends on `tests`, so don't remove `tests` under `networkx`
 - Remove all languages except `en` from `spacy/lang`. This is the most crucial step as it reduces the size significantly
