@@ -64,4 +64,7 @@ nlp = spacy.load("/tmp/en_core_web_sm-2.0.0/en_core_web_sm/en_core_web_sm-2.0.0"
 # Pytorch layer
 https://course.fast.ai/deployment_aws_lambda.html
 
+# Shrinking layers
+https://github.com/szelenka/shrink-linalg 
+
 *Contact me: shan@bewgle.com or theashworld@gmail.com*
