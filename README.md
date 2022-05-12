@@ -34,7 +34,7 @@ cd spacy/lang
 find . -name lemmatizer* | grep -v en | sudo xargs rm -rf
 cd ../../..
 zip -r9 spacyLayer2.1.0_38.zip .
-aws s3 cp spacyLayer2.1.0_38.zip s3://bewgle-data/ml-data/
+aws s3 cp spacyLayer2.1.0_38.zip s3://...
 ```
 
 
